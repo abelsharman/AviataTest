@@ -1,4 +1,7 @@
 # aviatatest
+## Status of last deployment:
+
+<img src="https://github.com/abelsharman/AviataTest/workflows/AviataCI/badge.svg?branch=master">
 
 ## Project setup
 ```
