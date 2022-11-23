@@ -1,0 +1,29 @@
+name: AviataCI
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Git clone
+        uses : actions/checkout@v2
+        
+      - name: Install node/modules
+        run : yarn
+        
+      - name: Build the project
+        run : yarn build
+        
+      - name: Publish
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.IP_SERVER }}
+          username: ${{ secrets.USER_SERVER }}
+          password: ${{ secrets.PASSWORD_SERVER }}
+          port: "22"
+          source: "distAviata"
+          target: ${{ secrets.PATH_SERVER }}
